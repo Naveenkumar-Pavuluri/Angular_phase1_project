@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <h2>Client Meetings</h2>
+  
+    <div class="mb-3">
+      <h3>Upcoming Meetings</h3>
+      
+      <!-- Client Name -->
+      <div class="mb-3">
+        <label for="clientName" class="form-label">Client Name:</label>
+        <input type="text" class="form-control" id="clientName" name="clientName" [(ngModel)]="newMeeting.clientName" placeholder="Enter client name" required>
+      </div>
+  
+      <!-- Person with whom the meeting is scheduled -->
+      <div class="mb-3">
+        <label for="meetingPerson" class="form-label">Meeting Person:</label>
+        <input type="text" class="form-control" id="meetingPerson" name="meetingPerson" [(ngModel)]="newMeeting.meetingPerson" placeholder="Enter meeting person" required>
+      </div>
+  
+      <!-- Meeting Date -->
+      <div class="mb-3">
+        <label for="meetingDateTime" class="form-label">Meeting Date and Time:</label>
+        <input type="datetime-local" class="form-control" id="meetingDateTime" name="meetingDateTime" [(ngModel)]="newMeeting.meetingDateTime" required>
+      </div>
+  
+      <!-- Add Meeting Button -->
+      <button type="button" class="btn btn-success mt-3" (click)="addMeeting()">Add Meeting</button>
+    </div>
+  
+   <!-- Display Upcoming Meetings Table -->
+  <div class="mt-4" *ngIf="upcomingMeetings.length > 0">
+    <h3>Upcoming Meetings</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Client Name</th>
+          <th>Meeting Person</th>
+          <th>Meeting Date and Time</th> <!-- Updated heading -->
+          <th>Action</th> <!-- Delete button column -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meeting of upcomingMeetings; let i = index">
+          <td>{{ meeting.clientName }}</td>
+          <td>{{ meeting.meetingPerson }}</td>
+          <td>{{ meeting.meetingDateTime | date: 'MMM d, y, h:mm a' }}</td> <!-- Updated property name and added space -->
+          <td>
+            <!-- Delete button with a click event -->
+            <button type="button" class="btn btn-danger" (click)="deleteMeeting(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+  
+    <!-- Buttons for Navigation with space -->
+    <div class="mt-4">
+      <a routerLink="/" class="btn btn-secondary mr-2">Back to Home</a>
+      <a routerLink="/client-creation" class="btn btn-info custom-margin">Go to Client Creation</a>
+    </div>
+  </div>
+  

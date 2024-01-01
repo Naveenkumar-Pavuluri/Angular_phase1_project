@@ -1,0 +1,14 @@
+<div>
+    <input type="text" [(ngModel)]="newClient.clientName" placeholder="Client Name">
+    <input type="text" [(ngModel)]="newClient.contactPerson" placeholder="Contact Person">
+    <input type="email" [(ngModel)]="newClient.email" placeholder="Email">
+    <input type="text" [(ngModel)]="newClient.phoneNumber" placeholder="Phone Number">
+    
+    <button (click)="onSubmit()">Submit</button>
+  </div>
+  
+  <div *ngFor="let client of submittedClients; let i = index">
+    <p>{{ client.clientName }} | {{ client.contactPerson }} | {{ client.email }} | {{ client.phoneNumber }}</p>
+    <button (click)="deleteClient(i)">Delete</button>
+  </div>
+  

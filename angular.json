@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Phase1-endproject"
+    }
+  },
+  "defaultProject": "Phase1-endproject",
+  "cli": {
+    "analytics": false
+  }
 }
