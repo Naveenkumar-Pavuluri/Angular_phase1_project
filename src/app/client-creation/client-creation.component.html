@@ -1,14 +1,65 @@
-<div>
-    <input type="text" [(ngModel)]="newClient.clientName" placeholder="Client Name">
-    <input type="text" [(ngModel)]="newClient.contactPerson" placeholder="Contact Person">
-    <input type="email" [(ngModel)]="newClient.email" placeholder="Email">
-    <input type="text" [(ngModel)]="newClient.phoneNumber" placeholder="Phone Number">
-    
-    <button (click)="onSubmit()">Submit</button>
+<div class="container mt-4">
+  <h2>Create a New Client</h2>
+  <form (submit)="onSubmit()">
+    <!-- Client Name -->
+    <div class="mb-3">
+      <label for="clientName" class="form-label">Client Name:</label>
+      <input type="text" class="form-control" id="clientName" name="clientName" [(ngModel)]="newClient.clientName" placeholder="Enter client name" required>
+    </div>
+
+    <!-- Contact Person -->
+    <div class="mb-3">
+      <label for="contactPerson" class="form-label">Contact Person:</label>
+      <input type="text" class="form-control" id="contactPerson" name="contactPerson" [(ngModel)]="newClient.contactPerson" placeholder="Enter contact person" required>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newClient.email" placeholder="Enter email" required>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number:</label>
+      <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="newClient.phoneNumber" placeholder="Enter phone number" required>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary mt-3">Create Client</button>
+  </form>
+
+  <!-- Display Submitted Clients Table -->
+<div class="mt-4" *ngIf="submittedClients.length > 0">
+  <h3>Submitted Clients</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Contact Person</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Action</th> <!-- Add a new column for the delete button -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of submittedClients; let i = index">
+        <td>{{ client.clientName }}</td>
+        <td>{{ client.contactPerson }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.phoneNumber }}</td>
+        <td>
+          <!-- Add a delete button with a click event -->
+          <button type="button" class="btn btn-danger" (click)="deleteClient(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <!-- Buttons for Navigation with custom margin class -->
+  <div class="mt-4">
+    <a routerLink="/" class="btn btn-secondary">Back to Home</a>
+    <a routerLink="/client-meetings" class="btn btn-info custom-margin">Go to Meetings</a>
   </div>
-  
-  <div *ngFor="let client of submittedClients; let i = index">
-    <p>{{ client.clientName }} | {{ client.contactPerson }} | {{ client.email }} | {{ client.phoneNumber }}</p>
-    <button (click)="deleteClient(i)">Delete</button>
-  </div>
-  
+</div>
