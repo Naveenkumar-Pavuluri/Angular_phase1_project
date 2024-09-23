@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Phase1-endproject:build"
+            "buildTarget": "Phase1-endproject:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Phase1-endproject:build:production"
+              "buildTarget": "Phase1-endproject:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Phase1-endproject:build"
+            "buildTarget": "Phase1-endproject:build"
           }
         },
         "test": {
@@ -121,7 +121,6 @@
       }
     }
   },
-  "defaultProject": "Phase1-endproject",
   "cli": {
     "analytics": false
   }
